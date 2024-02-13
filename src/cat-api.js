@@ -1,36 +1,29 @@
-// import SlimSelect from 'slimselect';
-// import cssLoader from 'css-loader';
-// import Notiflix from 'notiflix';
 import axios from 'axios';
 
-// Klucz API The Cat API
-const API_KEY =
+// Konfiguracja klucza API dla axios
+axios.defaults.headers.common['x-api-key'] =
   'live_vYSWqZaZ9I3XINODiUUhkZMgIxgBFrhL0Q8TlNOnnbyY4O4W4lkXElyMd0bKNK0y';
 
-// Konfiguracja domyślnych nagłówków dla axios
-axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
-axios.defaults.headers.common['x-api-key'] = API_KEY; // Twój klucz API
-
-// Funkcja pobierająca listę wszystkich ras kotów
-async function fetchAllBreeds() {
+// Funkcja do pobierania ras kotów
+export const fetchBreeds = async () => {
   try {
-    const response = await axios.get('/breeds');
+    const response = await axios.get('https://api.thecatapi.com/v1/breeds');
     return response.data;
   } catch (error) {
-    console.error(error);
-    return null; // lub obsługa błędów
+    console.error('Error fetching breeds:', error);
+    throw error;
   }
-}
+};
 
-// Funkcja pobierająca informacje o kocie na podstawie jego identyfikatora
-async function fetchCatById(catId) {
+// Funkcja do pobierania informacji o kocie na podstawie rasy
+export const fetchCatByBreed = async breedId => {
   try {
-    const response = await axios.get(`/images/search?breed_ids=${catId}`);
-    return response.data[0]; // Zakładając, że API zwraca tablicę
+    const response = await axios.get(
+      `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`
+    );
+    return response.data[0]; // Zwracamy pierwszy element, ponieważ API zwraca tablicę
   } catch (error) {
-    console.error(error);
-    return null; // lub obsługa błędów
+    console.error(`Error fetching cat by breed ${breedId}:`, error);
+    throw error;
   }
-}
-
-export { fetchAllBreeds, fetchCatById };
+};

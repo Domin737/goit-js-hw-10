@@ -1,2 +1,2 @@
 body,html{margin:0;padding:0;font-family:Arial,sans-serif}.container{max-width:600px;text-align:center;margin:20px auto;padding:20px}.breed-select,.cat-info img{width:100%;max-width:100%;margin-top:20px}.loader{width:120px;height:120px;border:3px solid rgba(0,0,0,0);border-top:5px solid #3498db;border-radius:50%;animation:spin 1s ease-in-out infinite;display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}@keyframes spin{0%{transform:translate(-50%,-50%)rotate(0deg)}to{transform:translate(-50%,-50%)rotate(360deg)}}.cat-info img{border-radius:10px;margin-top:20px}.cat-info h2,.cat-info p{text-align:left}
-/*# sourceMappingURL=index.0974140d.css.map */
+/*# sourceMappingURL=index.ced89250.css.map */

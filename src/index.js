@@ -8,22 +8,20 @@ import axios from 'axios';
 const API_KEY =
   'live_vYSWqZaZ9I3XINODiUUhkZMgIxgBFrhL0Q8TlNOnnbyY4O4W4lkXElyMd0bKNK0y';
 
-// Konfiguracja domyślnych nagłówków dla axios
-axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
-axios.defaults.headers.common['x-api-key'] = API_KEY; // Twój klucz API
-
 // Selektory elementów HTML
 const breedSelect = new SlimSelect('.breed-select');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
 const catInfo = document.querySelector('.cat-info');
 
-// Import funkcji z pliku cat-api.js
-import { fetchAllBreeds, fetchRandomCat, fetchCatById } from './cat-api.js';
-
 // Pobranie listy ras kotów po załadowaniu strony
 async function fetchBreeds() {
-  const breeds = await fetchAllBreeds();
+  const response = await axios.get('https://api.thecatapi.com/v1/breeds', {
+    headers: {
+      'x-api-key': API_KEY,
+    },
+  });
+  const breeds = await response.data;
   breedSelect.addOptions(
     breeds.map(breed => ({
       text: breed.name,
@@ -42,7 +40,15 @@ breedSelect.on('change', async selected => {
   catInfo.classList.remove('active');
 
   // Pobranie szczegółowych informacji o kocie
-  const catData = await fetchCatById(selected.value);
+  const response = await axios.get(
+    `https://api.thecatapi.com/v1/images/${selected.value}`,
+    {
+      headers: {
+        'x-api-key': API_KEY,
+      },
+    }
+  );
+  const catData = await response.data;
 
   // Ukrycie animacji ładowania
   loader.classList.remove('active');

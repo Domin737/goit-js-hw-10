@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wyszukiwarka kotów</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Wyszukiwarka kotów</h1>
+      <select class="breed-select">
+        <option value="">Wybierz rasę kota...</option>
+      </select>
+      <p class="loader">Ładowanie danych, proszę czekać...</p>
+      <p class="error">
+        Ups! Coś poszło nie tak! Spróbuj ponownie załadować stronę!
+      </p>
+      <div class="cat-info"></div>
+    </div>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

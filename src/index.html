@@ -4,20 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wyszukiwarka kotów</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <h1>Wyszukiwarka kotów</h1>
-      <select class="breed-select">
-        <option value="">Wybierz rasę kota...</option>
-      </select>
-      <p class="loader">Ładowanie danych, proszę czekać...</p>
-      <p class="error">
-        Ups! Coś poszło nie tak! Spróbuj ponownie załadować stronę!
-      </p>
+      <select class="breed-select"></select>
+      <div class="loader"></div>
       <div class="cat-info"></div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Notiflix/3.2.5/notiflix-aio-3.2.5.min.js"></script>
     <script src="index.js" type="module"></script>
   </body>
 </html>
